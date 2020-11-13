@@ -1,7 +1,7 @@
 <template>
     <div class="main">
               <div class="h4text">
-                <h4>早上好,尊敬的超级管理员</h4>
+                <h4>{{date()}},尊敬的超级管理员</h4>
               </div>
               <div class="img_top line-hg">
                 <img src="../../assets/statics/imgs/1.png">
@@ -30,6 +30,23 @@
               <div class="fot"></div>
           </div>
 </template>
+<script>
+export default {
+  methods: {
+    date(){
+        var date1=new Date();
+        var hours=date1.getHours();
+        if(hours<12){
+          return "上午好";
+        }else if(hours>11&&hours<18){
+          return "下午好";
+        }else{
+          return "晚上好";
+        }
+    }
+  }
+}
+</script>
 <style scoped>
     .h4text{
     width: 160px;

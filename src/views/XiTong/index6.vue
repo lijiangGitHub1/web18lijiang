@@ -1,26 +1,6 @@
 <template>
     <div class="main line-hg">
       <div class="div_top">
-       <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
-      <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value">
-    </el-option>
-    </el-select>
-
-
-     <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
-      <el-option
-      v-for="item2 in options2"
-      :key="item2.value"
-      :label="item2.label"
-      :value="item2.value">
-    </el-option>
-  </el-select>
-
-
   <el-input
   placeholder="模糊搜索"
   v-model="input"
@@ -33,7 +13,6 @@
         <el-row class="anniu">
 <el-button type="primary" class="">新增</el-button>
 <el-button type="danger">批量删除</el-button>
-<el-button>重置密码</el-button>
 </el-row>
 <el-table
     class="eltab"
@@ -53,32 +32,13 @@
     </el-table-column>
     <el-table-column
       prop="name"
-      label="姓名"
-      width="140">
+      label="科室名称"
+      width="200">
     </el-table-column>
     <el-table-column
-      prop="iphone"
-      label="手机号（登录账号）"
-      width="220"
-      show-overflow-tooltip>
-    </el-table-column>
-
-    <el-table-column
-      prop="sex"
-      label="性别"
-      width="140"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column
-      prop="gsname"
-      label="公司名称"
-      width="140"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column
-      prop="juese"
-      label="角色"
-      width="140"
+      prop="beizhu"
+      label="备注"
+      width="600"
       show-overflow-tooltip>
     </el-table-column>
         <el-table-column label="操作">
@@ -111,45 +71,34 @@ export default {
       return {
         tableData: [{
           id:1,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'科室一',
+          beizhu:'无'
         },
         {
           id:2,
-          name:'露娜',
-          iphone:'13278570090',
-          sex:'女',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'科室二',
+          beizhu:'无'
         },
         {
           id:3,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'科室三',
+          beizhu:'无'
         },
         {
           id:4,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'科室四',
+          beizhu:'无'
         },
         {
           id:5,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'科室五',
+          beizhu:'无'
+        },
+        {
+          id:6,
+          name:'科室六',
+          beizhu:'无'
         }
-       
          ],
         multipleSelection: [],
         input: '',
@@ -208,8 +157,12 @@ export default {
     margin: 15px 0;
   }
   .div_top{
+    width: 100%;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(202,210,217);
+  }
+  .div_top *{
+    float: left;
   }
   .sousuo1{
     margin-left: 10px;

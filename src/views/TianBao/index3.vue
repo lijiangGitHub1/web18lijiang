@@ -1,7 +1,23 @@
 <template>
     <div class="main line-hg">
       <div class="div_top">
-       <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
+       <el-select class="leix"  v-model="value" placeholder="项目主管部门">
+      <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+    </el-select>
+ <el-select class="jibie"  v-model="value" placeholder="项目级别">
+      <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+    </el-select>
+     <el-select class="leix"  v-model="value" placeholder="主管科室">
       <el-option
       v-for="item in options"
       :key="item.value"
@@ -10,8 +26,7 @@
     </el-option>
     </el-select>
 
-
-     <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
+       <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
       <el-option
       v-for="item2 in options2"
       :key="item2.value"
@@ -19,8 +34,7 @@
       :value="item2.value">
     </el-option>
   </el-select>
-
-
+   <div class="div_er">
   <el-input
   placeholder="模糊搜索"
   v-model="input"
@@ -28,12 +42,16 @@
 </el-input>
 <el-button type="primary" class="sousuo1">搜索</el-button>
 <el-button>重置</el-button>
+   </div>
   </div>  
       <div class="div_main">
         <el-row class="anniu">
 <el-button type="primary" class="">新增</el-button>
 <el-button type="danger">批量删除</el-button>
-<el-button>重置密码</el-button>
+<el-button>通过</el-button>
+<el-button>驳回</el-button>
+<el-button>提交</el-button>
+<el-button>导出</el-button>
 </el-row>
 <el-table
     class="eltab"
@@ -52,37 +70,45 @@
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
     <el-table-column
-      prop="name"
-      label="姓名"
-      width="140">
+      prop="date"
+      label="申报时间"
+      width="120">
     </el-table-column>
     <el-table-column
-      prop="iphone"
-      label="手机号（登录账号）"
-      width="220"
+      prop="status"
+      label="状态"
+      width="90"
       show-overflow-tooltip>
     </el-table-column>
 
     <el-table-column
-      prop="sex"
-      label="性别"
-      width="140"
+      prop="xmname"
+      label="荣誉名称"
+      width="160"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="gsname"
-      label="公司名称"
-      width="140"
+      prop="danwei"
+      label="项目主体"
+      width="160"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="juese"
-      label="角色"
-      width="140"
+      prop="type"
+      label="级别"
+      width="160"
       show-overflow-tooltip>
     </el-table-column>
-        <el-table-column label="操作">
+     <el-table-column label="操作">
       <template slot-scope="scope">
+        <el-button
+          size="mini"
+          type="success"
+          @click="handleEdit(scope.$index, scope.row)">详情</el-button>
+            <el-button
+          size="mini"
+          type="warning"
+          @click="handleEdit(scope.$index, scope.row)">公告</el-button>
            <el-button
           size="mini"
           type="primary"
@@ -111,46 +137,45 @@ export default {
       return {
         tableData: [{
           id:1,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          status:'待提交',
+          xmname:'某某荣誉',
+          danwei:'某某某主体描述',
+          type:'国家级',
+          date: '2020-08-08'
         },
         {
           id:2,
-          name:'露娜',
-          iphone:'13278570090',
-          sex:'女',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          status:'待提交',
+          xmname:'某某荣誉',
+          danwei:'某某某主体描述',
+          type:'国家级',
+          date: '2020-08-08'
         },
         {
           id:3,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          status:'已提交',
+          xmname:'某某荣誉',
+          danwei:'某某某主体描述',
+          type:'国家级',
+          date: '2018-11-08'
         },
         {
           id:4,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          status:'已提交',
+          xmname:'某某荣誉',
+          danwei:'某某某主体描述',
+          type:'国家级',
+          date: '2020-08-08'
         },
         {
           id:5,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          status:'待提交',
+          xmname:'某某荣誉',
+          danwei:'某某某主体描述',
+          type:'国家级',
+          date: '2019-08-08'
         }
-       
-         ],
+        ],
         multipleSelection: [],
         input: '',
         options: [{
@@ -197,9 +222,11 @@ export default {
 </script>
 
 <style scoped>
-.el-table .cell {
-  text-align: center!important;
-}
+  .jibie{
+    width: 240px;
+    float: left;
+    margin: 0 85px;
+  }
   .foot{
     margin-top: 15px;
   }
@@ -212,14 +239,20 @@ export default {
     border-bottom: 1px solid rgba(202,210,217);
   }
   .sousuo1{
-    margin-left: 10px;
+    margin-left: 85px;
   }
   .leix{
     width: 240px;
+    float: left;
+  }
+  .div_er{
+    margin: 20px 0 0 0;
+    float: left;
   }
   .riqi{
-    margin: 0 85px;
+    float: left;
     width: 240px;
+    margin: 20px 85px 0 0;
   }
   .el-input{
     width: 240px;

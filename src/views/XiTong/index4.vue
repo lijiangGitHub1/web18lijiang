@@ -1,26 +1,6 @@
 <template>
     <div class="main line-hg">
       <div class="div_top">
-       <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
-      <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value">
-    </el-option>
-    </el-select>
-
-
-     <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
-      <el-option
-      v-for="item2 in options2"
-      :key="item2.value"
-      :label="item2.label"
-      :value="item2.value">
-    </el-option>
-  </el-select>
-
-
   <el-input
   placeholder="模糊搜索"
   v-model="input"
@@ -33,7 +13,7 @@
         <el-row class="anniu">
 <el-button type="primary" class="">新增</el-button>
 <el-button type="danger">批量删除</el-button>
-<el-button>重置密码</el-button>
+<el-button>导出</el-button>
 </el-row>
 <el-table
     class="eltab"
@@ -54,31 +34,37 @@
     <el-table-column
       prop="name"
       label="姓名"
-      width="140">
+      width="120">
     </el-table-column>
     <el-table-column
-      prop="iphone"
-      label="手机号（登录账号）"
-      width="220"
+      prop="faren"
+      label="企业法人"
+      width="120"
       show-overflow-tooltip>
     </el-table-column>
 
     <el-table-column
-      prop="sex"
-      label="性别"
-      width="140"
+      prop="xingzhi"
+      label="企业性质"
+      width="120"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="gsname"
-      label="公司名称"
-      width="140"
+      prop="fuzeren"
+      label="负责人"
+      width="120"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="juese"
-      label="角色"
+      prop="iphone"
+      label="电话"
       width="140"
+      show-overflow-tooltip>
+    </el-table-column>
+        <el-table-column
+      prop="shehui"
+      label="社会信用代码"
+      width="165"
       show-overflow-tooltip>
     </el-table-column>
         <el-table-column label="操作">
@@ -111,45 +97,46 @@ export default {
       return {
         tableData: [{
           id:1,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'AAAA企业',
+          iphone:'13899660437',
+          faren:'张三',
+          xingzhi:"企业",
+          fuzeren:'隔壁老张',
+          shehui:'2354023452618063Y'
         },
         {
           id:2,
-          name:'露娜',
-          iphone:'13278570090',
-          sex:'女',
-          gsname: '某某子公司',
-          juese:'超级管理员'
-        },
-        {
+          name:'BBBB企业',
+          iphone:'13899660437',
+          faren:'张三',
+          xingzhi:"企业",
+          fuzeren:'隔壁老张',
+          shehui:'2354023452618063Y'
+        },{
           id:3,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
-        },
-        {
+          name:'CCCC企业',
+          iphone:'13899660437',
+          faren:'张三',
+          xingzhi:"企业",
+          fuzeren:'隔壁老张',
+          shehui:'2354023452618063Y'
+        },{
           id:4,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
-        },
-        {
+          name:'DDDD企业',
+          iphone:'13899660437',
+          faren:'张三',
+          xingzhi:"企业",
+          fuzeren:'隔壁老张',
+          shehui:'2354023452618063Y'
+        },{
           id:5,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          name:'EEEE企业',
+          iphone:'13899660437',
+          faren:'张三',
+          xingzhi:"企业",
+          fuzeren:'隔壁老张',
+          shehui:'2354023452618063Y'
         }
-       
          ],
         multipleSelection: [],
         input: '',
@@ -208,8 +195,12 @@ export default {
     margin: 15px 0;
   }
   .div_top{
+    width: 100%;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(202,210,217);
+  }
+  .div_top *{
+    float: left;
   }
   .sousuo1{
     margin-left: 10px;

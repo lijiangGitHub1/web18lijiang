@@ -9,4 +9,7 @@
   margin: 0;
   padding: 0;
 }
+.el-table .cell {
+  text-align: center!important;
+}
 </style>

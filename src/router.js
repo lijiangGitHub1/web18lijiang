@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
@@ -46,6 +45,51 @@ export default new Router({
                     path: 'juese',
                     component: () =>
                         import ('./views/XiTong/index2.vue')
+                },
+                {
+                    path: 'quanxian',
+                    component: () =>
+                        import ('./views/XiTong/index3.vue')
+                },
+                {
+                    path: 'qiye',
+                    component: () =>
+                        import ('./views/XiTong/index4.vue')
+                },
+                {
+                    path: 'gongsi',
+                    component: () =>
+                        import ('./views/XiTong/index5.vue')
+                },
+                {
+                    path: 'keshi',
+                    component: () =>
+                        import ('./views/XiTong/index6.vue')
+                },
+                {
+                    path: 'zhichi',
+                    component: () =>
+                        import ('./views/XiTong/index7.vue')
+                },
+                {
+                    path: 'zhuguan',
+                    component: () =>
+                        import ('./views/XiTong/index8.vue')
+                },
+                {
+                    path: 'zijin',
+                    component: () =>
+                        import ('./views/TianBao')
+                },
+                {
+                    path: 'keji',
+                    component: () =>
+                        import ('./views/TianBao/index2.vue')
+                },
+                {
+                    path: 'rongyu',
+                    component: () =>
+                        import ('./views/TianBao/index3.vue')
                 }
             ]
 

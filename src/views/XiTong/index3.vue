@@ -33,7 +33,6 @@
         <el-row class="anniu">
 <el-button type="primary" class="">新增</el-button>
 <el-button type="danger">批量删除</el-button>
-<el-button>重置密码</el-button>
 </el-row>
 <el-table
     class="eltab"
@@ -51,34 +50,16 @@
       width="50">
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="140">
-    </el-table-column>
-    <el-table-column
-      prop="iphone"
-      label="手机号（登录账号）"
-      width="220"
-      show-overflow-tooltip>
-    </el-table-column>
-
-    <el-table-column
-      prop="sex"
-      label="性别"
-      width="140"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column
-      prop="gsname"
-      label="公司名称"
-      width="140"
-      show-overflow-tooltip>
-    </el-table-column>
       <el-table-column
       prop="juese"
       label="角色"
-      width="140"
+      width="200"
+      show-overflow-tooltip>
+    </el-table-column>
+       <el-table-column
+      prop="miaoshu"
+      label="描述"
+      width="580"
       show-overflow-tooltip>
     </el-table-column>
         <el-table-column label="操作">
@@ -111,45 +92,24 @@ export default {
       return {
         tableData: [{
           id:1,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          juese:'超级管理员',
+          miaoshu:'无'
         },
         {
           id:2,
-          name:'露娜',
-          iphone:'13278570090',
-          sex:'女',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          juese:'领导',
+          miaoshu:'无'
         },
         {
           id:3,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          juese:'上报人',
+          miaoshu:'无'
         },
         {
           id:4,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
-        },
-        {
-          id:5,
-          name:'大马猴',
-          iphone:'13278570090',
-          sex:'男',
-          gsname: '某某子公司',
-          juese:'超级管理员'
+          juese:'审核人',
+          miaoshu:'无'
         }
-       
          ],
         multipleSelection: [],
         input: '',

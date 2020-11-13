@@ -7,7 +7,7 @@
          </div>
          <div class="div_right">
              <i class="el-icon-s-fold"></i>
-             <i class="el-icon-s-home"></i>
+             <router-link tag="i" to="/index/shouye" class="el-icon-s-home"></router-link>
              <i class="el-icon-monitor"></i>
              <i class="el-icon-refresh-right" @click="shuaxin"></i>
              <div class="date">
@@ -43,17 +43,17 @@
         <el-menu-item-group>
           <el-menu-item index="1-1"><router-link tag="div" to="/index/rizhi">操作日志</router-link></el-menu-item>
           <el-menu-item index="1-2"><router-link tag="div" to="/index/juese">角色管理</router-link></el-menu-item>
-          <el-menu-item index="1-3">权限管理</el-menu-item>
-          <el-menu-item index="1-4">企业管理</el-menu-item>
+          <el-menu-item index="1-3"><router-link tag="div" to="/index/quanxian">权限管理</router-link></el-menu-item>
+          <el-menu-item index="1-4"><router-link tag="div" to="/index/qiye">企业管理</router-link></el-menu-item>
           <el-submenu index="1-5">
               <template slot="title">
               <span slot="title">基础维护</span>
               </template>
               <el-menu-item-group>
-          <el-menu-item index="1-5-1">公司维护</el-menu-item>
-          <el-menu-item index="1-5-2">科室维护</el-menu-item>
-          <el-menu-item index="1-5-3">支持方式</el-menu-item>
-          <el-menu-item index="1-5-4">主管部门</el-menu-item>
+          <el-menu-item index="1-5-1"><router-link tag="div" to="/index/gongsi">公司维护</router-link></el-menu-item>
+          <el-menu-item index="1-5-2"><router-link tag="div" to="/index/keshi">科室维护</router-link></el-menu-item>
+          <el-menu-item index="1-5-3"><router-link tag="div" to="/index/zhichi">支持方式</router-link></el-menu-item>
+          <el-menu-item index="1-5-4"><router-link tag="div" to="/index/zhuguan">主管部门</router-link></el-menu-item>
               </el-menu-item-group>
               </el-submenu>
         </el-menu-item-group>
@@ -75,9 +75,9 @@
         <span slot="title">项目填报</span>
           </template>
           <el-menu-item-group>
-          <el-menu-item index="4-1">资金类填报</el-menu-item>
-          <el-menu-item index="4-2">科技类填报</el-menu-item>
-          <el-menu-item index="4-3">荣誉类填报</el-menu-item>
+          <el-menu-item index="4-1"><router-link tag="div" to="/index/zijin">资金类填报</router-link></el-menu-item>
+          <el-menu-item index="4-2"><router-link tag="div" to="/index/keji">科技类填报</router-link></el-menu-item>
+          <el-menu-item index="4-3"><router-link tag="div" to="/index/rongyu">荣誉类填报</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 
