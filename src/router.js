@@ -90,6 +90,35 @@ export default new Router({
                     path: 'rongyu',
                     component: () =>
                         import ('./views/TianBao/index3.vue')
+                },
+                {
+                    path: 'zjjindu',
+                    component: () =>
+                        import ('./views/JinDu/index.vue')
+                },
+                {
+                    path: 'kjjindu',
+                    component: () =>
+                        import ('./views/JinDu/index2.vue')
+                },
+                {
+                    path: 'zjyanshou',
+                    component: () =>
+                        import ('./views/YanShou/index.vue')
+                },
+                {
+                    path: 'kjyanshou',
+                    component: () =>
+                        import ('./views/YanShou/index2.vue')
+                }, {
+                    path: 'add',
+                    component: () =>
+                        import ('./views/XiTong/add.vue')
+                },
+                {
+                    path: 'wenjian',
+                    component: () =>
+                        import ('./views/DangAn/index.vue')
                 }
             ]
 

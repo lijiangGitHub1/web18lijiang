@@ -76,7 +76,7 @@
        <el-table-column
       prop="ip"
       label="ip"
-      width="126"
+      width="159"
       show-overflow-tooltip>
     </el-table-column>
   </el-table>
@@ -212,6 +212,8 @@ export default {
     margin: 15px 0;
   }
   .div_top{
+    text-align:left;
+    width:100%;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(202,210,217);
   }

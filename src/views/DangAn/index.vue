@@ -51,40 +51,51 @@
       width="50">
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
-    <el-table-column
-      prop="name"
-      label="项目名称"
-      width="170">
-    </el-table-column>
-    <el-table-column
-      prop="type"
-      label="项目类型"
-      width="100"
+     <el-table-column
+      prop="status"
+      label="状态"
+      width="120"
       show-overflow-tooltip>
     </el-table-column>
+    <el-table-column
+      prop="xmname"
+      label="项目名称"
+      width="140">
+    </el-table-column>
+   
 
     <el-table-column
-      prop="date"
-      label="项目发布日期"
+      prop="zhuti"
+      label="项目主体"
       width="160"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="miaoshu"
-      label="项目描述"
-      width="320"
+      prop="touzi"
+      label="总投资"
+      width="120"
       show-overflow-tooltip>
     </el-table-column>
-     <el-table-column label="操作">
+      <el-table-column
+      prop="shiji"
+      label="实际投资"
+      width="120"
+      show-overflow-tooltip>
+    </el-table-column>
+      <el-table-column label="操作">
       <template slot-scope="scope">
-        <el-button
+           <el-button
           size="mini"
           type="success"
-          @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+          @click="handleDelete(scope.$index, scope.row)">详情</el-button>
            <el-button
           size="mini"
           type="primary"
-          @click="handleDelete(scope.$index, scope.row)">编辑</el-button>
+          @click="handleDelete(scope.$index, scope.row)">上传</el-button>
+           <el-button
+          size="mini"
+          type="primary"
+          @click="handleDelete(scope.$index, scope.row)">验收</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -109,45 +120,45 @@ export default {
       return {
         tableData: [{
           id:1,
-          name:'申报国家外贸基地通知',
-          type:'发改',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省商务厅 2、文件名称：申报国家外贸基地 3、文件要求：见附件（项目管理信息系统内下载） 4、上报时间：请于10月10日下班前发送至战略发展部'
-        }, {
-           id:2,
-          name:'关于举办创新创业大赛',
-          type:'工信',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省科技厅 2、文件名称：关于举办创新创业大赛 3、文件要求：见附件（项目管理信息系统内下载，参赛企业必需通过科技型中小企业评价） 4、上报时间：请于10月30日完成网络申报。'
+          xmname:'-',
+          zhuti:'-',
+          touzi:'1000万',
+          status: '待验收',
+          shiji:''
+        },
+        {
+          id:2,
+          xmname:'-',
+          zhuti:'-',
+          touzi:'1000万',
+          status: '待验收',
+          shiji:''
+        },
+        {
+          id:3,
+          xmname:'-',
+          zhuti:'-',
+          touzi:'1000万',
+          status: '待验收',
+          shiji:''
+        },
+        {
+          id:4,
+          xmname:'-',
+          zhuti:'-',
+          touzi:'1000万',
+          status: '待验收',
+          shiji:''
+        },
+        {
+          id:5,
+          xmname:'-',
+          zhuti:'-',
+          touzi:'1000万',
+          status: '待验收',
+          shiji:''
         }
-        , {
-           id:3,
-          name:'关于举办创新创业大赛',
-          type:'工信',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省科技厅 2、文件名称：关于举办创新创业大赛 3、文件要求：见附件（项目管理信息系统内下载，参赛企业必需通过科技型中小企业评价） 4、上报时间：请于10月30日完成网络申报。'
-        }
-        , {
-           id:4,
-          name:'关于举办创新创业大赛',
-          type:'工信',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省科技厅 2、文件名称：关于举办创新创业大赛 3、文件要求：见附件（项目管理信息系统内下载，参赛企业必需通过科技型中小企业评价） 4、上报时间：请于10月30日完成网络申报。'
-        }
-        , {
-           id:5,
-          name:'关于举办创新创业大赛',
-          type:'工信',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省科技厅 2、文件名称：关于举办创新创业大赛 3、文件要求：见附件（项目管理信息系统内下载，参赛企业必需通过科技型中小企业评价） 4、上报时间：请于10月30日完成网络申报。'
-        }
-         , {
-           id:6,
-          name:'关于举办创新创业大赛',
-          type:'工信',
-          date: '2020-08-08',
-          miaoshu:'1、发文单位：省科技厅 2、文件名称：关于举办创新创业大赛 3、文件要求：见附件（项目管理信息系统内下载，参赛企业必需通过科技型中小企业评价） 4、上报时间：请于10月30日完成网络申报。'
-        }],
+         ],
         multipleSelection: [],
         input: '',
         options: [{
@@ -194,6 +205,9 @@ export default {
 </script>
 
 <style scoped>
+.el-table .cell {
+  text-align: center!important;
+}
   .foot{
     margin-top: 15px;
   }

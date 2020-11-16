@@ -31,7 +31,7 @@
   </div>  
       <div class="div_main">
         <el-row class="anniu">
-<el-button type="primary" class="">新增</el-button>
+<el-button type="primary" class="" @click="add">新增</el-button>
 <el-button type="danger">批量删除</el-button>
 </el-row>
 <el-table
@@ -82,6 +82,7 @@
   layout="prev, pager, next"
   :total="1000">
 </el-pagination>
+<router-view></router-view>
       </div>
     </div>
 </template>
@@ -151,6 +152,11 @@ export default {
       },
       handleDelete(index, row) {
         console.log(index, row);
+      },
+      add(){
+        this.$router.push({
+          path:'/index/add'
+        });
       }
     },
 }
@@ -168,6 +174,8 @@ export default {
     margin: 15px 0;
   }
   .div_top{
+    text-align:left;
+    width:100%;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(202,210,217);
   }

@@ -87,8 +87,8 @@
         <span slot="title">进度管理</span>
           </template>
           <el-menu-item-group>
-          <el-menu-item index="5-1">资金类进度</el-menu-item>
-          <el-menu-item index="5-2">科技类进度</el-menu-item>
+          <el-menu-item index="5-1"><router-link tag="div" to="/index/zjjindu">资金类进度</router-link></el-menu-item>
+          <el-menu-item index="5-2"><router-link tag="div" to="/index/kjjindu">科技类进度</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 
@@ -98,8 +98,8 @@
         <span slot="title">验收管理</span>
           </template>
           <el-menu-item-group>
-          <el-menu-item index="6-1">资金类验收</el-menu-item>
-          <el-menu-item index="6-2">科技类验收</el-menu-item>
+          <el-menu-item index="6-1"><router-link tag="div" to="/index/zjyanshou">资金类验收</router-link></el-menu-item>
+          <el-menu-item index="6-2"><router-link tag="div" to="/index/kjyanshou">科技类验收</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 
@@ -109,22 +109,27 @@
         <span slot="title">项目档案</span>
           </template>
           <el-menu-item-group>
-          <el-menu-item index="7-1">项目文件</el-menu-item>
-          <el-menu-item index="7-2">审计报告</el-menu-item>
+          <el-menu-item index="7-1"><router-link tag="div" to="/index/wenjian">项目文件</router-link></el-menu-item>
+          <el-menu-item index="7-2"><router-link tag="div" to="/index/baogao">审计报告</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 
       <el-menu-item index="8">
           <template slot="title">
+        <router-link tag="div" to="/index/zonglan">
         <i class="el-icon-platform-eleme"></i>
-        <span slot="title">项目总览</span>
+        <span slot="title"></span>
+        项目总览
+        </router-link>
           </template>
       </el-menu-item>
 
       <el-menu-item index="9">
           <template slot="title">
+            <router-link tag="div" to="/index/huishou">
         <i class="el-icon-delete"></i>
-        <span slot="title">回收站</span>
+        <span slot="title"></span>
+        回收站</router-link>
           </template>
       </el-menu-item>
     </el-menu>
