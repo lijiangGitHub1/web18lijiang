@@ -53,33 +53,34 @@
     </el-table-column>
      <el-table-column
       prop="type"
-      label="项目类型"
+      label="报告类型"
       width="120"
       show-overflow-tooltip>
     </el-table-column>
     <el-table-column
-      prop="danwei"
-      label="发文单位"
+      prop="gsname"
+      label="公司名称"
       width="140">
     </el-table-column>
    
 
     <el-table-column
-      prop="title"
-      label="文件标题"
+      prop="hao"
+      label="报告文号"
       width="150"
       show-overflow-tooltip>
     </el-table-column>
-      <el-table-column
-      prop="hao"
-      label="文件号"
-      width="200"
-      show-overflow-tooltip>
-    </el-table-column>
+    
       <el-table-column
       prop="date"
       label="发文日期"
       width="140"
+      show-overflow-tooltip>
+    </el-table-column>
+      <el-table-column
+      prop="beizhu"
+      label="备注"
+      width="200"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column label="操作">
@@ -117,40 +118,39 @@ export default {
         tableData: [{
           id:1,
           type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
+          gsname:'某某子公司',
+          beizhu:'',
+          hao: '专审字（2018）第070号',
           date:'2020-08-08'
         },{
           id:2,
           type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
+          gsname:'某某子公司',
+          beizhu:'',
+          hao: '专审字（2018）第070号',
           date:'2020-08-08'
         },{
           id:3,
           type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
+          gsname:'某某子公司',
+          beizhu:'',
+          hao: '专审字（2018）第070号',
           date:'2020-08-08'
         },{
           id:4,
           type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
+          gsname:'某某子公司',
+          beizhu:'',
+          hao: '专审字（2018）第070号',
           date:'2020-08-08'
         },{
           id:5,
           type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
+          gsname:'某某子公司',
+          beizhu:'',
+          hao: '专审字（2018）第070号',
           date:'2020-08-08'
         }
-        
          ],
         multipleSelection: [],
         input: '',

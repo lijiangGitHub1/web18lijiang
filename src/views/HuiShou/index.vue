@@ -1,7 +1,7 @@
 <template>
     <div class="main line-hg">
       <div class="div_top">
-       <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
+       <el-select class="leix"  v-model="value" placeholder="项目类别">
       <el-option
       v-for="item in options"
       :key="item.value"
@@ -11,17 +11,8 @@
     </el-select>
 
 
-     <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
-      <el-option
-      v-for="item2 in options2"
-      :key="item2.value"
-      :label="item2.label"
-      :value="item2.value">
-    </el-option>
-  </el-select>
-
-
   <el-input
+  class="mohu"
   placeholder="模糊搜索"
   v-model="input"
   clearable>
@@ -31,9 +22,8 @@
   </div>  
       <div class="div_main">
         <el-row class="anniu">
-<el-button type="primary" class="">新增</el-button>
+<el-button type="primary" class="">批量还原</el-button>
 <el-button type="danger">批量删除</el-button>
-<el-button>导出</el-button>
 </el-row>
 <el-table
     class="eltab"
@@ -51,47 +41,29 @@
       width="50">
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
-     <el-table-column
+    <el-table-column
+      prop="name"
+      label="项目名称"
+      width="440">
+    </el-table-column>
+    <el-table-column
       prop="type"
-      label="项目类型"
-      width="120"
+      label="项目类别"
+      width="300"
       show-overflow-tooltip>
     </el-table-column>
-    <el-table-column
-      prop="danwei"
-      label="发文单位"
-      width="140">
-    </el-table-column>
-   
 
-    <el-table-column
-      prop="title"
-      label="文件标题"
-      width="150"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column
-      prop="hao"
-      label="文件号"
-      width="200"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column
-      prop="date"
-      label="发文日期"
-      width="140"
-      show-overflow-tooltip>
-    </el-table-column>
-      <el-table-column label="操作">
+   
+     <el-table-column label="操作">
       <template slot-scope="scope">
-           <el-button
+        <el-button
           size="mini"
           type="success"
-          @click="handleDelete(scope.$index, scope.row)">查看</el-button>
+          @click="handleEdit(scope.$index, scope.row)">查看</el-button>
            <el-button
           size="mini"
           type="primary"
-          @click="handleDelete(scope.$index, scope.row)">编辑</el-button>
+          @click="handleDelete(scope.$index, scope.row)">还原</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -116,42 +88,29 @@ export default {
       return {
         tableData: [{
           id:1,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
         },{
           id:2,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
         },{
           id:3,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
         },{
           id:4,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
         },{
           id:5,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
-        }
-        
-         ],
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
+        },{
+          id:6,
+          name:'某某某公司建设的大数据项目',
+          type:'资金类'
+        } ],
         multipleSelection: [],
         input: '',
         options: [{
@@ -198,9 +157,9 @@ export default {
 </script>
 
 <style scoped>
-.el-table .cell {
-  text-align: center!important;
-}
+  .mohu{
+    margin-left: 40px;
+  }
   .foot{
     margin-top: 15px;
   }

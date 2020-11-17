@@ -1,7 +1,23 @@
 <template>
     <div class="main line-hg">
       <div class="div_top">
-       <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
+       <el-select class="leix"  v-model="value" placeholder="项目主管部门">
+      <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+    </el-select>
+ <el-select class="jibie"  v-model="value" placeholder="项目级别">
+      <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+    </el-select>
+     <el-select class="leix"  v-model="value" placeholder="主管科室">
       <el-option
       v-for="item in options"
       :key="item.value"
@@ -10,8 +26,7 @@
     </el-option>
     </el-select>
 
-
-     <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
+       <el-select class="riqi" v-model="value2" placeholder="请选择日期范围">
       <el-option
       v-for="item2 in options2"
       :key="item2.value"
@@ -19,20 +34,27 @@
       :value="item2.value">
     </el-option>
   </el-select>
-
-
+   <div class="div_er">
   <el-input
+  class="mohu"
   placeholder="模糊搜索"
   v-model="input"
   clearable>
 </el-input>
+    <el-select class="leix"  v-model="value" placeholder="主管科室">
+      <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+    </el-select>
 <el-button type="primary" class="sousuo1">搜索</el-button>
 <el-button>重置</el-button>
+   </div>
   </div>  
       <div class="div_main">
         <el-row class="anniu">
-<el-button type="primary" class="">新增</el-button>
-<el-button type="danger">批量删除</el-button>
 <el-button>导出</el-button>
 </el-row>
 <el-table
@@ -51,51 +73,48 @@
       width="50">
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
-     <el-table-column
-      prop="type"
-      label="项目类型"
-      width="120"
-      show-overflow-tooltip>
+    <el-table-column
+      prop="date"
+      label="申报时间"
+      width="120">
     </el-table-column>
     <el-table-column
-      prop="danwei"
-      label="发文单位"
-      width="140">
+      prop="status"
+      label="状态"
+      width="90"
+      show-overflow-tooltip>
     </el-table-column>
-   
 
     <el-table-column
-      prop="title"
-      label="文件标题"
-      width="150"
+      prop="xmname"
+      label="项目名称"
+      width="170"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="hao"
-      label="文件号"
-      width="200"
+      prop="zhuti"
+      label="项目类别"
+      width="160"
       show-overflow-tooltip>
     </el-table-column>
       <el-table-column
-      prop="date"
-      label="发文日期"
+      prop="xiachen"
+      label="项目主管部门"
+      width="160"
+      show-overflow-tooltip>
+    </el-table-column>
+     <el-table-column
+      prop="jibie"
+      label="项目级别"
       width="140"
       show-overflow-tooltip>
     </el-table-column>
-      <el-table-column label="操作">
+     <el-table-column label="操作">
       <template slot-scope="scope">
-           <el-button
-          size="mini"
-          type="success"
-          @click="handleDelete(scope.$index, scope.row)">查看</el-button>
-           <el-button
-          size="mini"
-          type="primary"
-          @click="handleDelete(scope.$index, scope.row)">编辑</el-button>
         <el-button
           size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          type="success"
+          @click="handleEdit(scope.$index, scope.row)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -116,42 +135,52 @@ export default {
       return {
         tableData: [{
           id:1,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司大数据建设',
+          status:'待提交',
+          xmname:'某某某公司大数据建设',
+          zhuti:'资金类',
+          xiachen:'发改',
+          date: '2020-08-08',
+          jibie:'国家'
         },{
           id:2,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司大数据建设',
+          status:'待提交',
+          xmname:'某某某公司大数据建设',
+          zhuti:'资金类',
+          xiachen:'发改',
+          date: '2020-08-08',
+          jibie:'国家'
         },{
           id:3,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司大数据建设',
+          status:'待提交',
+          xmname:'某某某公司大数据建设',
+          zhuti:'资金类',
+          xiachen:'发改',
+          date: '2020-08-08',
+          jibie:'国家'
         },{
           id:4,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司大数据建设',
+          status:'待提交',
+          xmname:'某某某公司大数据建设',
+          zhuti:'资金类',
+          xiachen:'发改',
+          date: '2020-08-08',
+          jibie:'国家'
         },{
           id:5,
-          type:'类型一',
-          danwei:'某某某单位',
-          title:'标题标题标题标题',
-          hao: '某某某哦【2020】2号',
-          date:'2020-08-08'
+          name:'某某某公司大数据建设',
+          status:'待提交',
+          xmname:'某某某公司大数据建设',
+          zhuti:'资金类',
+          xiachen:'发改',
+          date: '2020-08-08',
+          jibie:'国家'
         }
         
-         ],
+        ],
         multipleSelection: [],
         input: '',
         options: [{
@@ -198,9 +227,14 @@ export default {
 </script>
 
 <style scoped>
-.el-table .cell {
-  text-align: center!important;
-}
+  .mohu{
+    margin-left: 85px;
+  }
+  .jibie{
+    width: 240px;
+    float: left;
+    margin: 0 85px;
+  }
   .foot{
     margin-top: 15px;
   }
@@ -209,20 +243,24 @@ export default {
     margin: 15px 0;
   }
   .div_top{
-    text-align:left;
-    width:100%;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(202,210,217);
   }
   .sousuo1{
-    margin-left: 10px;
+    margin-left: 20px;
   }
   .leix{
     width: 240px;
+    float: left;
+  }
+  .div_er{
+    margin: 20px 0 0 0;
+    float: left;
   }
   .riqi{
-    margin: 0 85px;
+    float: left;
     width: 240px;
+    margin: 20px 85px 0 0;
   }
   .el-input{
     width: 240px;

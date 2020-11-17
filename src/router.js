@@ -119,7 +119,23 @@ export default new Router({
                     path: 'wenjian',
                     component: () =>
                         import ('./views/DangAn/index.vue')
+                },
+                {
+                    path: 'baogao',
+                    component: () =>
+                        import ('./views/DangAn/index2.vue')
+                },
+                {
+                    path: 'zonglan',
+                    component: () =>
+                        import ('./views/ZongLan')
+                },
+                {
+                    path: 'huishou',
+                    component: () =>
+                        import ('./views/HuiShou')
                 }
+
             ]
 
         }
