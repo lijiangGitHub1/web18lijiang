@@ -37,7 +37,7 @@
 <el-table
     class="eltab"
     ref="multipleTable"
-    :data="tableData"
+    :data="data"
     tooltip-effect="dark"
     style="width: 100%"
     @selection-change="handleSelectionChange">
@@ -47,19 +47,19 @@
     </el-table-column>
     <el-table-column
       label="序号"
-      width="50">
+      width="180">
       <template slot-scope="scope">{{ scope.row.id }}</template>
     </el-table-column>
       <el-table-column
-      prop="juese"
+      prop="name"
       label="角色"
-      width="200"
+      width="180"
       show-overflow-tooltip>
     </el-table-column>
        <el-table-column
-      prop="miaoshu"
+      prop="state"
       label="描述"
-      width="580"
+      width="450"
       show-overflow-tooltip>
     </el-table-column>
         <el-table-column label="操作">
@@ -89,29 +89,19 @@
 
 <script>
 export default {
+  created() {
+    this.axios.get('http://yapi.dapengjiaoyu.com/mock/380/order').then((res)=>{
+      console.log(res.data.data);
+      var array=[];
+      for(var i=6;i<12;i++){
+        array.push(res.data.data[i]);
+      }
+      this.data=array;
+    });
+  },
    data() {
       return {
-        tableData: [{
-          id:1,
-          juese:'超级管理员',
-          miaoshu:'无'
-        },
-        {
-          id:2,
-          juese:'领导',
-          miaoshu:'无'
-        },
-        {
-          id:3,
-          juese:'上报人',
-          miaoshu:'无'
-        },
-        {
-          id:4,
-          juese:'审核人',
-          miaoshu:'无'
-        }
-         ],
+        data:'',
         multipleSelection: [],
         input: '',
         options: [{
@@ -151,7 +141,23 @@ export default {
         console.log(index, row);
       },
       handleDelete(index, row) {
-        console.log(index, row);
+         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        this.data.splice(index,1);
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+
       },
       add(){
         this.$router.push({
