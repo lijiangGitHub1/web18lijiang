@@ -1,5 +1,5 @@
 <template>
-    <div class="main line-hg">
+    <div class="main line-hg" @>
       <div class="div_top">
        <el-select class="leix"  v-model="value" placeholder="请选择项目类型">
       <el-option
@@ -39,8 +39,7 @@
     ref="multipleTable"
     :data="data"
     tooltip-effect="dark"
-    style="width: 100%"
-    @selection-change="handleSelectionChange">
+    style="width: 100%">
     <el-table-column
       type="selection"
       width="55">
@@ -67,7 +66,7 @@
            <el-button
           size="mini"
           type="primary"
-          @click="handleDelete(scope.$index, scope.row)">编辑</el-button>
+          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -82,16 +81,30 @@
   layout="prev, pager, next"
   :total="1000">
 </el-pagination>
-<router-view></router-view>
+      </div>
+      <div style="display:none;">
+        {{$route.params.content}}
+        {{$route.params.content2}}
       </div>
     </div>
 </template>
 
 <script>
+var height=479;
+var flag=0;
+var id=201412101228;
 export default {
+  beforeUpdate() {
+    flag++;
+    id+=0.5;
+    if(this.$route.params.content!=undefined&&this.$route.params.content2!=undefined&&this.$route.params.content!=''&&this.$route.params.content2!=''&&flag!=667){
+       this.data.push({'id':id,'name':this.$route.params.content,'state':this.$route.params.content2});
+        height+=53;
+        document.getElementsByClassName("main")[0].style.height=height+'px';
+    }
+  },
   created() {
     this.axios.get('http://yapi.dapengjiaoyu.com/mock/380/order').then((res)=>{
-      console.log(res.data.data);
       var array=[];
       for(var i=6;i<12;i++){
         array.push(res.data.data[i]);
@@ -101,7 +114,7 @@ export default {
   },
    data() {
       return {
-        data:'',
+        data:[],
         multipleSelection: [],
         input: '',
         options: [{
@@ -138,7 +151,9 @@ export default {
     },
     methods: {
        handleEdit(index, row) {
-        console.log(index, row);
+         this.$router.push({
+          path:'/index/update'
+        });
       },
       handleDelete(index, row) {
          this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -150,7 +165,8 @@ export default {
             type: 'success',
             message: '删除成功!'
           });
-        this.data.splice(index,1);
+           this.data.splice(index,1);
+           flag=666;
         }).catch(() => {
           this.$message({
             type: 'info',

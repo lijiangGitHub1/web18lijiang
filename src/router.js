@@ -134,8 +134,18 @@ export default new Router({
                     path: 'huishou',
                     component: () =>
                         import ('./views/HuiShou')
+                },
+                {
+                    path: 'addquanxian',
+                    name: 'addquanxian',
+                    component: () =>
+                        import ('./views/XiTong/index3.vue')
+                },
+                {
+                    path: 'update',
+                    component: () =>
+                        import ('./views/XiTong/update.vue')
                 }
-
             ]
 
         }
