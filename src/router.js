@@ -143,6 +143,7 @@ export default new Router({
                 },
                 {
                     path: 'update',
+                    name: 'update',
                     component: () =>
                         import ('./views/XiTong/update.vue')
                 }

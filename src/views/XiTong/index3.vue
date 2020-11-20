@@ -85,6 +85,7 @@
       <div style="display:none;">
         {{$route.params.content}}
         {{$route.params.content2}}
+        {{$route.params.index}}
       </div>
     </div>
 </template>
@@ -92,13 +93,17 @@
 <script>
 var height=479;
 var flag=0;
-var id=201412101228;
+var id=201412101229;
 export default {
   beforeUpdate() {
     flag++;
-    id+=0.5;
-    if(this.$route.params.content!=undefined&&this.$route.params.content2!=undefined&&this.$route.params.content!=''&&this.$route.params.content2!=''&&flag!=667){
-       this.data.push({'id':id,'name':this.$route.params.content,'state':this.$route.params.content2});
+    if(this.$route.params.str=='update'){
+       this.data[this.$route.params.index].name=this.$route.params.content;
+       this.data[this.$route.params.index].state=this.$route.params.content2;
+    }
+    else if(this.$route.params.content!=undefined&&this.$route.params.content2!=undefined&&this.$route.params.content!=''&&this.$route.params.content2!=''&&flag!=667){
+        id+=1;
+        this.data.push({'id':id,'name':this.$route.params.content,'state':this.$route.params.content2});
         height+=53;
         document.getElementsByClassName("main")[0].style.height=height+'px';
     }
@@ -152,7 +157,13 @@ export default {
     methods: {
        handleEdit(index, row) {
          this.$router.push({
-          path:'/index/update'
+          path:'/index/update',
+          name:'update',
+          params:{
+            id:index,
+            name:row.name,
+            state:row.state
+          }
         });
       },
       handleDelete(index, row) {

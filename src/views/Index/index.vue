@@ -254,6 +254,9 @@ export default {
 };
 </script>
 <style scoped>
+::-webkit-scrollbar{
+  display: none;
+}
 .sou2 {
   cursor: pointer;
   color: white;
